@@ -9,4 +9,6 @@ public class Bullet_SO : ScriptableObject
     public float bulletSpeed;
 
     public Bullet bulletToFire;
+    public ParticleSystem collisionParticles;
+    public AudioClip collisionSound;
 }

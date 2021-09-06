@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 7063237635450260134}
   - component: {fileID: 7063237635450260057}
   - component: {fileID: 7063237635450260056}
+  - component: {fileID: 2073041276}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -343,6 +344,26 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!114 &2073041276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7063237635450260061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62f22b975144b4243866e3266d83fdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletStats: {fileID: 11400000, guid: d3e23187284c0d54ebab96a5a8926fbb, type: 2}
+  origin: {fileID: 7063237635642901680}
+  chargeParticles: {fileID: 0}
+  fireParticles: {fileID: 0}
+  chargeSound: {fileID: 0}
+  fireSound: {fileID: 0}
+  maxChargeParticles: {fileID: 0}
+  maxChargeSound: {fileID: 0}
 --- !u!1 &7063237635642901683
 GameObject:
   m_ObjectHideFlags: 0

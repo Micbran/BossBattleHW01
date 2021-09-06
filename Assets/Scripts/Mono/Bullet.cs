@@ -9,13 +9,20 @@ public class Bullet : MonoBehaviour
     private bool targetHit;
     private Transform baseTransform;
 
-    public void Fire(GameObject shooter, Vector3 travelDirection, float projectileSpeed, int damage)
+    private ParticleSystem collisionParticles;
+    private AudioClip collisionSound;
+
+    public void Fire(GameObject shooter, Vector3 travelDirection, float projectileSpeed, int damage, 
+        ParticleSystem collisionParticles = null, AudioClip collisionSound = null)
     {
         this.shooter = shooter;
         this.projectileSpeed = projectileSpeed;
         this.damage = damage;
         this.travelDirection = travelDirection;
         this.travelDirection.Normalize();
+
+        this.collisionParticles = collisionParticles;
+        this.collisionSound = collisionSound;
 
         this.baseTransform = this.transform;
         this.targetHit = false;
@@ -43,8 +50,21 @@ public class Bullet : MonoBehaviour
         IDamageable[] damageables = collision.gameObject.GetComponents<IDamageable>();
         foreach (IDamageable damageable in damageables)
         {
-            damageable.TakeDamage(damage); // TODO put damage numbers somewhere
+            damageable.TakeDamage(damage);
         }
+        this.Feedback();
         Destroy(gameObject);
+    }
+
+    private void Feedback()
+    {
+        if (this.collisionParticles != null)
+        {
+            Instantiate(this.collisionParticles, this.transform.position, Quaternion.identity);
+        }
+        if (this.collisionSound != null)
+        {
+            AudioHelper.PlayClip2D(this.collisionSound, 1f);
+        }
     }
 }
