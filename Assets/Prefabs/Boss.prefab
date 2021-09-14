@@ -566,6 +566,10 @@ GameObject:
   - component: {fileID: 4833498927309026196}
   - component: {fileID: 4833498927309026199}
   - component: {fileID: 4833498927309026198}
+  - component: {fileID: 4833498925884972095}
+  - component: {fileID: 4833498925884972096}
+  - component: {fileID: 4833498925884972097}
+  - component: {fileID: 4833498925884972098}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -625,6 +629,59 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &4833498925884972095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4833498927309026197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e58bc8d63d54f244b31ec5311389a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: 493116e918a578f469cf48e6bee5bc7e, type: 3}
+--- !u!114 &4833498925884972096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4833498927309026197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94be7635eb7283241b9e5dc6edd7fffc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathParticles: {fileID: 0}
+--- !u!114 &4833498925884972097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4833498927309026197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 007f0c02609107f499041b768ca70ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4833498925884972098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4833498927309026197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad11f585817c814d9c433c4b5356781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  damageParticles: {fileID: 0}
+  damageSound: {fileID: 8300000, guid: 7d7d4507428703e4e854d917cfc1505d, type: 3}
 --- !u!1 &4833498927332585016
 GameObject:
   m_ObjectHideFlags: 0

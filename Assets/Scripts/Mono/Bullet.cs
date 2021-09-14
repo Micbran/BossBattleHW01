@@ -50,7 +50,7 @@ public class Bullet : MonoBehaviour
         IDamageable[] damageables = collision.gameObject.GetComponents<IDamageable>();
         foreach (IDamageable damageable in damageables)
         {
-            damageable.TakeDamage(damage);
+            damageable.TakeDamage(this.damage);
         }
         this.Feedback();
         Destroy(gameObject);
