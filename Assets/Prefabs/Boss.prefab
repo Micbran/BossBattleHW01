@@ -570,6 +570,7 @@ GameObject:
   - component: {fileID: 4833498925884972096}
   - component: {fileID: 4833498925884972097}
   - component: {fileID: 4833498925884972098}
+  - component: {fileID: 2992232486559381198}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -654,7 +655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94be7635eb7283241b9e5dc6edd7fffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathParticles: {fileID: 0}
+  deathParticles: {fileID: 8495879324565392487, guid: 4eef0500b381adf41a97ecad358e6e38, type: 3}
 --- !u!114 &4833498925884972097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,9 +680,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cad11f585817c814d9c433c4b5356781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
-  damageParticles: {fileID: 0}
+  maxHealth: 20
+  damageParticles: {fileID: 8495879324565392487, guid: 2001dcf59ee44ed49b6ce0fc459d7fd8, type: 3}
   damageSound: {fileID: 8300000, guid: 7d7d4507428703e4e854d917cfc1505d, type: 3}
+--- !u!114 &2992232486559381198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4833498927309026197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42df37d5626ffd4478b0f4f0bda976b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultLeft: {fileID: 0}
+  defaultRight: {fileID: 0}
+  defaultCenter: {fileID: 0}
+  rotationFireBack: {fileID: 0}
+  strafeFireLeft: {fileID: 0}
+  strafeFireRight: {fileID: 0}
+  defaultSpeed: 0.08
+  movingToPointSpeed: 0.1
+  rotationFireSpeed: 0.04
+  strafeSpeed: 0.06
+  rotationFireWeight: 0.5
+  rotationFireStep: 0.05
+  strafeFireWeight: 0.5
+  strafeFireStep: 0.05
+  specialStateWeight: 0.5
+  specialStateStep: 0.05
+  stateTimerMax: 5
 --- !u!1 &4833498927332585016
 GameObject:
   m_ObjectHideFlags: 0

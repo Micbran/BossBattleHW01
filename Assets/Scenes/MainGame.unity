@@ -1254,10 +1254,10 @@ MonoBehaviour:
   rotationFireBack: {fileID: 883576123}
   strafeFireLeft: {fileID: 1034685428}
   strafeFireRight: {fileID: 392755337}
-  defaultSpeed: 0.008
-  movingToPointSpeed: 0.01
-  rotationFireSpeed: 0.004
-  strafeSpeed: 0.006
+  defaultSpeed: 0.08
+  movingToPointSpeed: 0.1
+  rotationFireSpeed: 0.04
+  strafeSpeed: 0.06
   rotationFireWeight: 0.5
   rotationFireStep: 0.05
   strafeFireWeight: 0.5

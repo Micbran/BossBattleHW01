@@ -50,7 +50,7 @@ public class BossMovement : MonoBehaviour
         defaultOrder.Add(this.defaultCenter);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         switch(this.state)
         {

@@ -158,9 +158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cad11f585817c814d9c433c4b5356781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
-  damageParticles: {fileID: 0}
-  damageSound: {fileID: 8300000, guid: 4c8b075bdfe35a442870ce6fbed3f3b2, type: 3}
+  maxHealth: 1
+  damageParticles: {fileID: 8681846324981654113, guid: 8ca59f001ecc6994885e5d0f60d36730, type: 3}
+  damageSound: {fileID: 8300000, guid: a80140ba00a76db48a886a38e7deeec5, type: 3}
 --- !u!114 &2274999639409404891
 MonoBehaviour:
   m_ObjectHideFlags: 0
