@@ -1144,18 +1144,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2274999639409404890, guid: d00a1ed04d41f58468af03c479e568fa, type: 3}
-      propertyPath: maxHealth
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2274999639409404890, guid: d00a1ed04d41f58468af03c479e568fa, type: 3}
-      propertyPath: damageSound
-      value: 
-      objectReference: {fileID: 8300000, guid: a80140ba00a76db48a886a38e7deeec5, type: 3}
-    - target: {fileID: 2274999639409404890, guid: d00a1ed04d41f58468af03c479e568fa, type: 3}
-      propertyPath: damageParticles
-      value: 
-      objectReference: {fileID: 8681846324981654113, guid: 8ca59f001ecc6994885e5d0f60d36730, type: 3}
     - target: {fileID: 2274999639409404893, guid: d00a1ed04d41f58468af03c479e568fa, type: 3}
       propertyPath: m_Name
       value: DestructibleWall
@@ -1169,18 +1157,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4833498925884972096, guid: 762fe890244dad04a88bcc6d7ff3154e, type: 3}
-      propertyPath: deathParticles
+    - target: {fileID: 2992232486559381198, guid: 762fe890244dad04a88bcc6d7ff3154e, type: 3}
+      propertyPath: defaultLeft
       value: 
-      objectReference: {fileID: 8495879324565392487, guid: 4eef0500b381adf41a97ecad358e6e38, type: 3}
-    - target: {fileID: 4833498925884972098, guid: 762fe890244dad04a88bcc6d7ff3154e, type: 3}
-      propertyPath: maxHealth
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4833498925884972098, guid: 762fe890244dad04a88bcc6d7ff3154e, type: 3}
-      propertyPath: damageParticles
+      objectReference: {fileID: 442732194}
+    - target: {fileID: 2992232486559381198, guid: 762fe890244dad04a88bcc6d7ff3154e, type: 3}
+      propertyPath: defaultRight
       value: 
-      objectReference: {fileID: 8495879324565392487, guid: 2001dcf59ee44ed49b6ce0fc459d7fd8, type: 3}
+      objectReference: {fileID: 2061385364}
+    - target: {fileID: 2992232486559381198, guid: 762fe890244dad04a88bcc6d7ff3154e, type: 3}
+      propertyPath: defaultCenter
+      value: 
+      objectReference: {fileID: 356390527}
+    - target: {fileID: 2992232486559381198, guid: 762fe890244dad04a88bcc6d7ff3154e, type: 3}
+      propertyPath: strafeFireLeft
+      value: 
+      objectReference: {fileID: 1034685428}
+    - target: {fileID: 2992232486559381198, guid: 762fe890244dad04a88bcc6d7ff3154e, type: 3}
+      propertyPath: strafeFireRight
+      value: 
+      objectReference: {fileID: 392755337}
+    - target: {fileID: 2992232486559381198, guid: 762fe890244dad04a88bcc6d7ff3154e, type: 3}
+      propertyPath: rotationFireBack
+      value: 
+      objectReference: {fileID: 883576123}
     - target: {fileID: 4833498927309026196, guid: 762fe890244dad04a88bcc6d7ff3154e, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1231,40 +1231,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 762fe890244dad04a88bcc6d7ff3154e, type: 3}
---- !u!1 &4833498925884972094 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4833498927309026197, guid: 762fe890244dad04a88bcc6d7ff3154e, type: 3}
-  m_PrefabInstance: {fileID: 4833498925884972093}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4833498925884972095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4833498925884972094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42df37d5626ffd4478b0f4f0bda976b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultLeft: {fileID: 442732194}
-  defaultRight: {fileID: 2061385364}
-  defaultCenter: {fileID: 356390527}
-  rotationFireBack: {fileID: 883576123}
-  strafeFireLeft: {fileID: 1034685428}
-  strafeFireRight: {fileID: 392755337}
-  defaultSpeed: 0.08
-  movingToPointSpeed: 0.1
-  rotationFireSpeed: 0.04
-  strafeSpeed: 0.06
-  rotationFireWeight: 0.5
-  rotationFireStep: 0.05
-  strafeFireWeight: 0.5
-  strafeFireStep: 0.05
-  specialStateWeight: 0.5
-  specialStateStep: 0.05
-  stateTimerMax: 5
 --- !u!1001 &7063237633731646246
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ For visuals, codeblocks are used. The key for the symbols used is as such:
 When Octogun is described as rotating, they always rotate _counterclockwise_.
 
 #### Patrol Points - Default State
-Octogun's default state is to patrol between a triangular set of points (two in the back, one closer to center).
+Octogun's default state is to patrol between a triangular set of points (two in the back, one closer to center). Octogun moves in the fashion of left -> right -> center -> left.
 ```
 .....*O->.................................*.....
 ................................................
@@ -56,7 +56,7 @@ Randomly, Octogun will move close to center stage and once they reach there, beg
 #### Aggressive Strafe - StrafeFire State
 State Transition Guide: `Default State -> MovingToPoint State -> StrafeFire State -> Default State`
 
-Once Octogun's health has been dropped below 50%, they will gain a new random behavior. They will move to the left edge of the stage. Once they reach there, they will begin to rotate slowly counterclockwise (to 90 deg) and back clockwise (to 90 deg) and move to the right edge of the stage. Once they reach the right edge of the stage, they will return to the Default State (and thus resume patrol).
+Octogun will move to the left edge of the stage. Once they reach there, they will begin to rotate slowly counterclockwise (to 90 deg) and back clockwise (to 90 deg) and move to the right edge of the stage. Once they reach the right edge of the stage, they will return to the Default State (and thus resume patrol).
 ```
 ................................................
 ................................................
@@ -91,9 +91,9 @@ While in the StrafeFire state, Octogun will slowly rotate from right to left, fi
 ![Strafing Fire](images/strafing_fire.jpg)
 
 ### Innovation
-When Octogun is reduced to 50% HP, they will release barriers that block the player's shots but not their own. The barriers can be destroyed with enough damage from the player.
+When Octogun is reduced to 50% HP, they will periodically release barriers that block the player's shots but not their own. These barriers are slow moving and deal damage on contact. They can be destroyed with enough damage from the player.
 ```
-................................................
+........................O.......................
 ................................................
 ................................................
 ................................................
