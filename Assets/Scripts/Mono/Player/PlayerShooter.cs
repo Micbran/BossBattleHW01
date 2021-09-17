@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerShooter : MonoBehaviour
 {
+    public event Action<float> OnChargeChange = delegate { };
+    public event Action OnChargeEnd = delegate { };
+
     [SerializeField] private Bullet_SO bulletStats;
     [SerializeField] private Transform origin;
     [SerializeField] private ParticleSystem chargeParticles;
@@ -58,12 +62,13 @@ public class PlayerShooter : MonoBehaviour
 
     private void KeepCharging()
     {
-        chargeTime = Mathf.Clamp(chargeTime + Time.deltaTime, 0, 7f);
-        if (chargeTime >= 6.9f && !this.fullCharge)
+        this.chargeTime = Mathf.Clamp(this.chargeTime + Time.deltaTime, 0, 7f);
+        if (this.chargeTime >= 6.9f && !this.fullCharge)
         {
             this.fullCharge = true;
             this.ChargeMaxFeedback();
         }
+        this.OnChargeChange?.Invoke(this.chargeTime);
     }
 
     private void ReleaseCharge()
@@ -86,7 +91,8 @@ public class PlayerShooter : MonoBehaviour
         {
             this.BadChargeFeedback();
         }
-        isCharging = false;
+        this.OnChargeEnd?.Invoke();
+        this.isCharging = false;
         this.fullCharge = false;
         this.chargeTime = 0f;
     }

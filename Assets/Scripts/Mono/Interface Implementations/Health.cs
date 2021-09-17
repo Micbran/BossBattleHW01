@@ -1,24 +1,37 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : IDamageable
 {
-    private int currentHealth;
+    public event Action<int> OnTakeDamage = delegate { };
+
+    public int CurrentHealth { get; private set; }
+
     [SerializeField] private int maxHealth;
 
     [SerializeField] private ParticleSystem damageParticles;
     [SerializeField] private AudioClip damageSound;
 
+    public int MaxHealth
+    {
+        get
+        {
+            return this.maxHealth;
+        }
+    }
+
     private void Awake()
     {
-        this.currentHealth = this.maxHealth;
+        this.CurrentHealth = this.maxHealth;
     }
 
     public override void TakeDamage(int damage)
     {
-        this.currentHealth -= damage;
+        this.CurrentHealth -= damage;
         this.DamageFeedback();
+        this.OnTakeDamage?.Invoke(this.CurrentHealth);
         this.CheckIfDead();
     }
 
@@ -36,7 +49,7 @@ public class Health : IDamageable
 
     private void CheckIfDead()
     {
-        if (currentHealth <= 0)
+        if (CurrentHealth <= 0)
         {
             this.Kill();
         }
