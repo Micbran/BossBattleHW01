@@ -15,6 +15,11 @@ public class Player : MonoBehaviour
         {
             this.invincible = value;
         }
+
+        get
+        {
+            return this.invincible;
+        }
     }
 
     private ShipController shipController;

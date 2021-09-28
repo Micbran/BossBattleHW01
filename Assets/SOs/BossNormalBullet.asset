@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34747e1d199fd9c4582c78aa3b573a96, type: 3}
+  m_Name: BossNormalBullet
+  m_EditorClassIdentifier: 
+  bulletDamage: 1
+  bulletSpeed: 10
+  bulletToFire: {fileID: 3269328387066706221, guid: 5666650bb74cf4145bd48cb433e81471, type: 3}
+  collisionParticles: {fileID: 3895204913805568777, guid: cb0ed3b168c85d046a60da301fe352f6, type: 3}
+  collisionSound: {fileID: 0}

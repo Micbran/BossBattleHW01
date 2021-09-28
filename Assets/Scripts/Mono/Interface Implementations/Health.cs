@@ -9,10 +9,17 @@ public class Health : IDamageable
 
     public int CurrentHealth { get; private set; }
 
+    private float invincibilityTimer = -1;
+    private float invincibilityTimerMax = 2f;
+
+    [SerializeField] private Color invincibleColor;
+
     [SerializeField] private int maxHealth;
 
     [SerializeField] private ParticleSystem damageParticles;
     [SerializeField] private AudioClip damageSound;
+
+    private Player ifPlayer = null;
 
     public int MaxHealth
     {
@@ -25,14 +32,38 @@ public class Health : IDamageable
     private void Awake()
     {
         this.CurrentHealth = this.maxHealth;
+        this.ifPlayer = this.GetComponent<Player>();
+    }
+
+    private void Update()
+    {
+        if (this.ifPlayer != null && this.ifPlayer.Invincible)
+        {
+            this.invincibilityTimer -= Time.deltaTime;
+            if (this.invincibilityTimer < 0)
+            {
+                ifPlayer.ResetColor();
+                this.ifPlayer.Invincible = false;
+            }
+        }
     }
 
     public override void TakeDamage(int damage)
     {
+        if (this.ifPlayer != null && this.ifPlayer.Invincible)
+        {
+            return;
+        }
         this.CurrentHealth -= damage;
         this.DamageFeedback();
         this.OnTakeDamage?.Invoke(this.CurrentHealth);
         this.CheckIfDead();
+        if (this.ifPlayer != null)
+        {
+            this.ifPlayer.Invincible = true;
+            this.ifPlayer.SetColor(this.invincibleColor);
+            this.invincibilityTimer = this.invincibilityTimerMax;
+        } 
     }
 
     private void DamageFeedback()

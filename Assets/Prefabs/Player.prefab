@@ -359,6 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cad11f585817c814d9c433c4b5356781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invincibleColor: {r: 0.8396226, g: 0.8148175, b: 0.23366857, a: 1}
   maxHealth: 3
   damageParticles: {fileID: 8495879324565392487, guid: 2001dcf59ee44ed49b6ce0fc459d7fd8, type: 3}
   damageSound: {fileID: 8300000, guid: 4c8b075bdfe35a442870ce6fbed3f3b2, type: 3}

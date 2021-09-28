@@ -20,6 +20,8 @@ public class BossMovement : MonoBehaviour
     [SerializeField] private float movingToPointSpeed;
     [SerializeField] private float rotationFireSpeed;
     [SerializeField] private float strafeSpeed;
+    [SerializeField] private float rotationRotateSpeed;
+    [SerializeField] private float strafeRotateSpeed;
     [Space(10)]
     [SerializeField] private float rotationFireWeight = 0.5f;
     [SerializeField] private float rotationFireStep = 0.05f;
@@ -31,7 +33,15 @@ public class BossMovement : MonoBehaviour
     [SerializeField] private float specialStateStep = 0.05f;
     [Space(10)]
     [SerializeField] private float stateTimerMax = 5.0f;
+    [Space(10)]
+    [SerializeField] private MeshRenderer stateIndicator;
+    [SerializeField] private Color rotationColor;
+    [SerializeField] private Color strafeColor;
+    private Color defaultColor;
+
     private Transform currentDestination;
+    private bool isOneHalf;
+    private int rotationSign;
     private Transform baseTransform;
     private BossState state;
 
@@ -39,12 +49,23 @@ public class BossMovement : MonoBehaviour
 
     private float stateTimer = 0;
 
+    public BossState CurrentState
+    {
+        get
+        {
+            return this.state;
+        }
+    }
+
     private void Awake()
     {
         this.currentDestination = this.defaultLeft;
         this.baseTransform = this.transform;
         this.state = BossState.DefaultState;
         this.stateTimer = this.stateTimerMax;
+        this.isOneHalf = false;
+        this.rotationSign = 1;
+        this.defaultColor = this.stateIndicator.material.color;
         defaultOrder.Add(this.defaultLeft);
         defaultOrder.Add(this.defaultRight);
         defaultOrder.Add(this.defaultCenter);
@@ -104,6 +125,7 @@ public class BossMovement : MonoBehaviour
         }
 
         this.MoveTowardsDestination();
+        this.Rotate();
     }
 
     private void HandleStrafeFireState()
@@ -114,48 +136,55 @@ public class BossMovement : MonoBehaviour
         }
 
         this.MoveTowardsDestination();
+        this.RotateBounce();
     }
 
     private void TransitionToMovingToPointRotation()
     {
-        Debug.Log("Moving to point rotation triggered.");
         this.state = BossState.MovingToPointRotationState;
         this.currentDestination = this.defaultCenter;
+        this.stateIndicator.material.color = this.rotationColor;
+        this.ResetRotation();
     }
 
     private void TransitionToMovingToPointStrafe()
     {
-        Debug.Log("Moving to point strafe triggered.");
         this.state = BossState.MovingToPointStrafeState;
         this.currentDestination = this.strafeFireLeft;
+        this.stateIndicator.material.color = this.strafeColor;
+        this.ResetRotation();
     }
 
     private void TransitionToRotationOrStrafeFire()
     {
         if (this.state == BossState.MovingToPointRotationState)
         {
-            Debug.Log("Rotation fire triggered.");
             this.state = BossState.RotationFireState;
             this.currentDestination = this.rotationFireBack;
+            this.stateIndicator.material.color = this.rotationColor;
+            this.ResetRotation();
         }
         else if (this.state == BossState.MovingToPointStrafeState)
         {
-            Debug.Log("Strafe fire triggered.");
             this.state = BossState.StrafeFireState;
             this.currentDestination = this.strafeFireRight;
+            this.stateIndicator.material.color = this.strafeColor;
+            this.ResetRotation();
         }
         else
         {
-            Debug.Log("Reset to default.");
             this.state = BossState.DefaultState;
+            this.stateIndicator.material.color = this.defaultColor;
+            this.ResetRotation();
         }
     }
 
     private void TransitionToDefaultState()
     {
-        Debug.Log("Default state triggered.");
         this.currentDestination = this.defaultOrder[0];
         this.state = BossState.DefaultState;
+        this.stateIndicator.material.color = this.defaultColor;
+        this.ResetRotation();
     }
 
     private void DecideNextMove()
@@ -163,7 +192,6 @@ public class BossMovement : MonoBehaviour
         this.stateTimer -= Time.deltaTime;
         if (stateTimer > 0) return;
 
-        Debug.Log("State timer triggered.");
         stateTimer = this.stateTimerMax;
         // janky "not quite" pnrg, because I'm too lazy to have a starting value
         if (Random.value <= this.specialStateWeight)
@@ -198,6 +226,28 @@ public class BossMovement : MonoBehaviour
             Vector3.MoveTowards(this.baseTransform.position, this.currentDestination.position, this.DetermineSpeed());
     }
 
+    private void Rotate()
+    {
+        this.baseTransform.RotateAround(this.baseTransform.position, Vector3.up, this.rotationRotateSpeed * Time.deltaTime);
+    }
+
+    private void RotateBounce()
+    {
+        if (!this.isOneHalf && this.CheckRotation())
+        {
+            this.isOneHalf = true;
+            this.rotationSign *= -1;
+        }
+        this.baseTransform.RotateAround(this.baseTransform.position, Vector3.up, this.strafeRotateSpeed * Time.deltaTime * -this.rotationSign);
+    }
+
+    private void ResetRotation()
+    {
+        this.baseTransform.rotation = Quaternion.Euler(0, 0, 0);
+        this.isOneHalf = false;
+        this.rotationSign = 1;
+    }
+
     private float DetermineSpeed()
     {
         return this.state switch
@@ -214,5 +264,10 @@ public class BossMovement : MonoBehaviour
     private bool CheckDistance()
     {
         return Vector3.Distance(this.baseTransform.position, this.currentDestination.position) <= this.minDistance;
+    }
+
+    private bool CheckRotation()
+    {
+        return this.baseTransform.position.z >= 0;
     }
 }

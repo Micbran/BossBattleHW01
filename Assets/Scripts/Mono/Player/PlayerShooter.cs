@@ -84,7 +84,7 @@ public class PlayerShooter : MonoBehaviour
         if (this.chargeTime > 1f)
         {
             Bullet bullet = Instantiate(bulletStats.bulletToFire, origin.position, Quaternion.identity);
-            bullet.Fire(this.gameObject, this.origin.forward, this.CalculateBulletSpeed(bulletStats.bulletSpeed), this.CalculateBulletDamage(bulletStats.bulletDamage), bulletStats.collisionParticles, bulletStats.collisionSound);
+            bullet.Fire(this.gameObject, this.origin.forward, this.CalculateBulletSpeed(bulletStats.bulletSpeed), this.CalculateBulletDamage(bulletStats.bulletDamage), bulletStats.collisionParticles, bulletStats.collisionSound, true);
             this.ReleaseFeedback();
         }
         else

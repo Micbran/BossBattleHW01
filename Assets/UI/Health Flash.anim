@@ -306,8 +306,7 @@ AnimationClip:
   - time: 1
     functionName: FinishAnimation
     data: 
-    objectReferenceParameter: {fileID: 11500000, guid: 093f9624121c84f48b0518a1b6880d1f,
-      type: 3}
+    objectReferenceParameter: {fileID: 11500000, guid: 093f9624121c84f48b0518a1b6880d1f, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
