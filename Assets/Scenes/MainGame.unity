@@ -261,7 +261,7 @@ MonoBehaviour:
   healthBarValue: {fileID: 1252931760}
   healthBarForeground: {fileID: 1301949324}
   healthBarMiddleground: {fileID: 767955067}
-  secondaryHealthBarDrainRate: 0.0002
+  secondaryHealthBarDrainRate: 0.002
 --- !u!1 &110720484
 GameObject:
   m_ObjectHideFlags: 0
@@ -4147,7 +4147,7 @@ MonoBehaviour:
   healthBarValue: {fileID: 927382911}
   healthBarForeground: {fileID: 264465381}
   healthBarMiddleground: {fileID: 1760519086}
-  secondaryHealthBarDrainRate: 0.0002
+  secondaryHealthBarDrainRate: 0.002
 --- !u!1 &1691874352
 GameObject:
   m_ObjectHideFlags: 0
@@ -4784,6 +4784,18 @@ PrefabInstance:
       propertyPath: rotationFireBack
       value: 
       objectReference: {fileID: 883576123}
+    - target: {fileID: 2992232486559381198, guid: 762fe890244dad04a88bcc6d7ff3154e, type: 3}
+      propertyPath: specialStateWeight
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2992232486559381198, guid: 762fe890244dad04a88bcc6d7ff3154e, type: 3}
+      propertyPath: stateTransitionClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9ee7a8b0a6b2cde49a9fe48e8b7b500a, type: 3}
+    - target: {fileID: 4833498925884972098, guid: 762fe890244dad04a88bcc6d7ff3154e, type: 3}
+      propertyPath: maxHealth
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 4833498925884972103, guid: 762fe890244dad04a88bcc6d7ff3154e, type: 3}
       propertyPath: strafeBurstMax
       value: 0.4

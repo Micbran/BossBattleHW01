@@ -37,6 +37,8 @@ public class BossMovement : MonoBehaviour
     [SerializeField] private MeshRenderer stateIndicator;
     [SerializeField] private Color rotationColor;
     [SerializeField] private Color strafeColor;
+    [Space(10)]
+    [SerializeField] private AudioClip stateTransitionClip;
     private Color defaultColor;
 
     private Transform currentDestination;
@@ -144,6 +146,7 @@ public class BossMovement : MonoBehaviour
         this.state = BossState.MovingToPointRotationState;
         this.currentDestination = this.defaultCenter;
         this.stateIndicator.material.color = this.rotationColor;
+        this.TransitionFeedback();
         this.ResetRotation();
     }
 
@@ -152,6 +155,7 @@ public class BossMovement : MonoBehaviour
         this.state = BossState.MovingToPointStrafeState;
         this.currentDestination = this.strafeFireLeft;
         this.stateIndicator.material.color = this.strafeColor;
+        this.TransitionFeedback();
         this.ResetRotation();
     }
 
@@ -162,6 +166,7 @@ public class BossMovement : MonoBehaviour
             this.state = BossState.RotationFireState;
             this.currentDestination = this.rotationFireBack;
             this.stateIndicator.material.color = this.rotationColor;
+            this.TransitionFeedback();
             this.ResetRotation();
         }
         else if (this.state == BossState.MovingToPointStrafeState)
@@ -169,6 +174,7 @@ public class BossMovement : MonoBehaviour
             this.state = BossState.StrafeFireState;
             this.currentDestination = this.strafeFireRight;
             this.stateIndicator.material.color = this.strafeColor;
+            this.TransitionFeedback();
             this.ResetRotation();
         }
         else
@@ -246,6 +252,14 @@ public class BossMovement : MonoBehaviour
         this.baseTransform.rotation = Quaternion.Euler(0, 0, 0);
         this.isOneHalf = false;
         this.rotationSign = 1;
+    }
+
+    private void TransitionFeedback()
+    {
+        if (this.stateTransitionClip != null)
+        {
+            AudioHelper.PlayClip2D(this.stateTransitionClip, 0.8f);
+        }
     }
 
     private float DetermineSpeed()

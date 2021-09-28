@@ -34,7 +34,7 @@ public class HealthBar : MonoBehaviour
         stats.OnTakeDamage -= UpdateHealthBar;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (healthBarMiddleground.fillAmount <= healthBarForeground.fillAmount)
             return;
